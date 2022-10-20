@@ -10,14 +10,14 @@ function App() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    getData();
-  };
-
   const api = {
     key: "751c141bb0da187bc829bfd596da5338",
     base: "https://api.openweathermap.org/data/2.5/",
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    getData();
   };
 
   function getData() {
@@ -30,16 +30,8 @@ function App() {
         console.log(error);
       });
   }
-  function getInput(event) {
-    event.preventDefault();
-    if (event.type == "click") {
-      getData(search);
-      console.log(search);
-    }
-  }
 
   function displayData(response) {
-    console.log("yo");
     if (response.cod === "404") {
       setError("Please enter a valid city");
       setSearch("");
